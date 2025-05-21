@@ -24,3 +24,9 @@
 - Navbar should update as soon as user logs in
 - Refactor out code to add cosnstants file + create a components folder
 
+- You should not be able to access other routes without login
+- If token is not present, redirect the user to login page
+- Logout
+- Profile
+
+
