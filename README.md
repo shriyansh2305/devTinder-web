@@ -32,4 +32,5 @@
 - build the profile edit feature
 - show toast message on save of profile
 - See all my connections
-
+- New page to see all my connections
+- New page to see all my connection requests

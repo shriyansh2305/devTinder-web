@@ -25,7 +25,7 @@ const NavBar = () => {
         </Link>
       </div>
       {user && (
-        <div className="flex gap-2">
+        <div className="flex items-center gap-2">
           <div>Welcome, {user.firstName}</div>
           <div className="dropdown dropdown-end mx-5 flex">
             <div
@@ -48,6 +48,9 @@ const NavBar = () => {
               </li>
               <li>
                 <Link to="/connections">Connections</Link>
+              </li>
+              <li>
+                <Link to="/requests">Requests</Link>
               </li>
               <li>
                 <Link onClick={handleLogout}>Logout</Link>
