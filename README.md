@@ -46,3 +46,24 @@ Body
     Route = /connections => Connections
     Route = /profile => Profile
 
+
+# Deployment
+
+- Signup on AWS
+- Launch ec2 instance
+- Create a key-value pair
+- try to login though ssh
+- chmod 400 <secret>.pem
+- connected to ubuntu machine using ssh command: ssh -i "devTinder-secret.pem" ubuntu@ec2-13-51-233-21.eu-north-1.compute.amazonaws.com
+- install Node on ubuntu(the same version we used during our local development)
+- git clone both backend and frontend repos
+- Frontend
+    - npm install (to install the depedencies)
+    - npm run build (generates a dist folder)
+    - sudo apt update
+    - sudo apt install nginx
+    - sudo systemctl start nginx
+    - sudo systemctl enable nginx
+    - copy code from dist folder(build files) to nginx http server (located at: /var/www/html/)
+    - sudo scp -r dist/* /var/www/html/
+    - get the public ipv4 and enable port 80 of your instance
