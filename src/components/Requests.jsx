@@ -35,7 +35,11 @@ const Requests = () => {
 
   if (!requests) return;
   if (requests.length === 0)
-    return <h1 className="text-bold text-2xl flex justify-center my-10">No Requests Found</h1>;
+    return (
+      <h1 className="text-bold text-2xl flex justify-center my-10">
+        No Requests Found
+      </h1>
+    );
   return (
     <div className="text-center my-10">
       <h1 className="text-bold text-white text-3xl">Connection Requests</h1>
@@ -49,29 +53,31 @@ const Requests = () => {
             key={_id}
             className="flex justify-between items-center m-4 p-4 rounded-lg bg-base-300 w-2/3 mx-auto"
           >
-            <div>
-              <img
-                src={photoUrl}
-                alt="Profile Photo"
-                className="w-20 h-20 rounded-full"
-              />
+            <div className="flex items-center">
+              <div className="w-20 h-20 shrink-0">
+                <img
+                  src={photoUrl}
+                  alt="Profile Photo"
+                  className="w-full h-full rounded-full object-cover"
+                />
+              </div>
+              <div className="text-left mx-4">
+                <h2 className="font-bold text-xl">
+                  {firstName + " " + lastName}
+                </h2>
+                {age && gender && <p>{age + ", " + gender}</p>}
+                <p>{about}</p>
+              </div>
             </div>
-            <div className="text-left mx-4">
-              <h2 className="font-bold text-xl">
-                {firstName + " " + lastName}
-              </h2>
-              {age && gender && <p>{age + ", " + gender}</p>}
-              <p>{about}</p>
-            </div>
-            <div>
+            <div className="flex-shrink-0">
               <button
-                className="btn btn-soft btn-primary mx-2"
+                className="btn btn-primary mx-2"
                 onClick={() => reviewRequest("accepted", request._id)}
               >
                 Accept
               </button>
               <button
-                className="btn btn-soft btn-secondary mx-2"
+                className="btn btn-secondary mx-2"
                 onClick={() => reviewRequest("rejected", request._id)}
               >
                 Reject

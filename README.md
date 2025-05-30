@@ -35,12 +35,9 @@
 - New page to see all my connections
 - New page to see all my connection requests
 - Feature: accept/reject connection request
-
-- Remaining topics:
-    - Send/ignore user from feed
-    - Signup new user
-    - E2E testing
-
+- Send/ignore user from feed
+- Signup new user
+- E2E testing
 
 Body
     NavBar

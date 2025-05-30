@@ -23,7 +23,11 @@ const Connections = () => {
 
   if (!connections) return;
   if (connections.length === 0)
-    return <h1 className="text-bold text-2xl flex justify-center my-10">No Connections Found</h1>;
+    return (
+      <h1 className="text-bold text-2xl flex justify-center my-10">
+        No Connections Found
+      </h1>
+    );
   return (
     <div className="text-center my-10">
       <h1 className="text-bold text-white text-3xl">Connections</h1>
@@ -33,18 +37,23 @@ const Connections = () => {
           connection;
 
         return (
-          <div key={_id} className="flex m-4 p-4 rounded-lg bg-base-300 w-1/2 mx-auto">
-            <div>
+          <div
+            key={_id}
+            className="flex m-4 p-4 rounded-lg bg-base-300 w-2/3 mx-auto"
+          >
+            <div className="w-20 h-20 shrink-0">
               <img
                 src={photoUrl}
                 alt="Profile Photo"
-                className="w-20 h-20 rounded-full"
+                className="w-full h-full rounded-full object-cover"
               />
             </div>
             <div className="text-left mx-4">
-                <h2 className="font-bold text-xl">{firstName + " " + lastName}</h2>
-                {age && gender && <p>{age + ", " + gender}</p>}
-                <p>{about}</p>
+              <h2 className="font-bold text-xl">
+                {firstName + " " + lastName}
+              </h2>
+              {age && gender && <p>{age + ", " + gender}</p>}
+              <p>{about}</p>
             </div>
           </div>
         );
