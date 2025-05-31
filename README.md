@@ -67,3 +67,39 @@ Body
     - copy code from dist folder(build files) to nginx http server (located at: /var/www/html/)
     - sudo scp -r dist/* /var/www/html/
     - get the public ipv4 and enable port 80 of your instance
+- Backend
+    - whitelist the public ip of ec2 machine on mongo
+    - installed pm2 globally (npm i pm2 -g)
+    - pm2 start npm -- start or pm2 start npm --name "devTinder-backend" -- start
+    - pm2 logs
+    - pm2 flush <name of process>
+    - pm2 list
+    - pm2 stop <name of process>
+    - pm2 delete <name of process>
+    - config nginx- sudo nano /etc/nginx/sites-available/default
+    - test nginx- sudo nginx -t
+    - restart nginx- sudo systemctl reload nginx
+    - Modify the BASE_URL in frontend project to "/api"
+
+
+    Frontend = http://13.51.233.21/
+    Backend = http://13.51.233.21:7777/
+
+    Domain Name = devtinder.com => mapped to => 13.51.223.21
+
+    Frontend = devtinder.com
+    Backend = devtinder.com:7777 => mapped to => devtinder.com/api
+
+    proxy pass in the nginx configuration
+
+# nginx config: 
+
+    server_name 13.51.233.21;
+    location /api/ {
+            proxy_pass http://localhost:7777/;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection 'upgrade';
+            proxy_set_header Host $host;
+            proxy_cache_bypass $http_upgrade;
+    }
