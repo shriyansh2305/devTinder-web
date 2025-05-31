@@ -58,10 +58,10 @@ Body
 - install Node on ubuntu(the same version we used during our local development)
 - git clone both backend and frontend repos
 - Frontend
-    - npm install (to install the depedencies)
+    - npm install (to install the depedencies) [ one-time]
     - npm run build (generates a dist folder)
     - sudo apt update
-    - sudo apt install nginx
+    - sudo apt install nginx 
     - sudo systemctl start nginx
     - sudo systemctl enable nginx
     - copy code from dist folder(build files) to nginx http server (located at: /var/www/html/)
@@ -103,3 +103,14 @@ Body
             proxy_set_header Host $host;
             proxy_cache_bypass $http_upgrade;
     }
+
+# Adding custom domain name
+
+    - purchased domain name from godaddy
+    - signup on cloudflare and add a new domain name
+    - change the nameservers on godaddy and point it to cloudflare
+    - wait for sometime till your nameservers are updated (approx 15mins)
+    - read about nameservers, cloudfalre, dns, A record
+    - Added the "A" record and set the ip to public ip of machine
+    - enable the SSL/TLS on cloudflare
+    - check how we enable full ssl
