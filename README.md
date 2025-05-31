@@ -114,3 +114,18 @@ Body
     - Added the "A" record and set the ip to public ip of machine
     - enable the SSL/TLS on cloudflare
     - check how we enable full ssl
+
+# Sending emails via SES
+
+    - create a IAM user
+    - give acces to AmazonSESFullAccess
+    - Amazon SES: Create an identity
+    - Verify your domain name
+    - Verify your email address identity
+    - install AWS SDK and make sure yu are on v3
+    - setup SESclient
+    - Access Credentials should be created in IAM under Security Credentials Tab
+    - Add the credentials to the env file
+    - Write code for SESClient
+    - Write code for sending email address
+    - Make the email dynamic by passing more params to the run function
