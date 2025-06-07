@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { createSocketConnection } from "../utils/socket";
 import { useSelector } from "react-redux";
+import axios from "axios";
+import { BASE_URL } from "../utils/constants";
 
 const Chat = () => {
   const { targetUserId } = useParams();
@@ -9,6 +11,24 @@ const Chat = () => {
   const [newMessage, setNewMessage] = useState("");
   const user = useSelector((store) => store.user);
   const userId = user?._id;
+
+  const fetchChatMessages = async () => {
+    const chat = await axios.get(BASE_URL + "/chat/" + targetUserId, {
+      withCredentials: true,
+    });
+    const chatMessages = chat?.data?.messages.map((msg) => {
+        return {
+            firstName: msg?.senderId?.firstName,
+            lastName: msg?.senderId?.lastName,
+            text: msg?.text,
+            userId: msg?.senderId?._id,
+        };
+    });
+    setMessages(chatMessages);
+  };
+  useEffect(() => {
+    fetchChatMessages();
+  }, []);
   useEffect(() => {
     if (!userId) return;
     const socket = createSocketConnection();
@@ -18,9 +38,8 @@ const Chat = () => {
       userId,
       targetUserId,
     });
-    socket.on("messageReceived", ({ firstName, text }) => {
-      console.log(firstName + ": " + text);
-      setMessages((prev) => [...prev, { firstName, text }]);
+    socket.on("messageReceived", ({ firstName, lastName, text, userId }) => {
+      setMessages((prev) => [...prev, { firstName, lastName,  text, userId }]);
     });
     return () => {
       socket.disconnect();
@@ -31,6 +50,7 @@ const Chat = () => {
     const socket = createSocketConnection();
     socket.emit("sendMessage", {
       firstName: user.firstName,
+      lastName: user.lastName,
       userId,
       targetUserId,
       text: newMessage,
@@ -46,8 +66,8 @@ const Chat = () => {
             return (
               <div key={index}>
                 {/* received messages will have chat-start and sent will have chat-end */}
-                <div className="chat chat-start">
-                  <div className="chat-header">{msg.firstName}</div>
+                <div className={"chat " + (msg?.userId?.toString()===userId?.toString() ? "chat-end" : "chat-start")}>
+                  <div className="chat-header">{`${msg.firstName} ${msg.lastName}`}</div>
                   <div className="chat-bubble chat-bubble-primary">
                     {msg.text}
                   </div>

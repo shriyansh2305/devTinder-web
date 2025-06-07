@@ -162,3 +162,15 @@ Body
     - npm i socket.io-client
     - try to go through the documentation and implement auth for room verification
     - Chess or tic-tac-toe game
+    - Initialize the chat
+    - create socket connections
+    - listen to events
+    - Homework: improve the UI
+    - Homework: Security bug fix : Can I send message to a person who is not my friend? - uth in web-socket
+    - Homework: If I am not friend, then I should not be able to chat ✅
+    - Homework: feat: Show Green Symbol when online? (last seen 2 hours ago)
+    - Homework: Limit messages when fetching from db
+    - Homework: Pagination kind of message showing, when I scroll up, show the older messages
+    - Project Idea 1: Can you make a tic-tac-toe game
+    - Project Idea 2: Chess Game
+    - Project Idea 3: typeracer
