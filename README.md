@@ -129,3 +129,36 @@ Body
     - Write code for SESClient
     - Write code for sending email address
     - Make the email dynamic by passing more params to the run function
+
+# Scheduling CRON jobs in Node Js
+
+    - Installing node-cron
+    - Learningg about cron-expressions syntax - crontab.guru
+    - Schedule a job
+    - date-fns
+    - Find all the unique email ids who have git connection request in previous day
+    - Send Email
+    - Explore queue mechanisms to send bulk emails
+    - Amazon SES bulk email sending
+    - Make sendEmail function dynamic
+    - bee-queue and bull npm packages
+
+# Razorpay payment Gateway Integration
+    - Signup on razorpay and complete KYC
+    - Create a UI for premium page
+    - Create an API for create order in backend
+    - added key and secret in env file
+    - initialized razorpay in utils
+    - created order in razorpay
+    - create schema and model
+    - saved teh order in payments collection
+    - make the API dynamic (gold/silver amount from backend)
+
+# Real time chat using websockets(socket.io)
+    - build the ui for chat window on /chat/:targetUserId
+    - setup socket.io in the backend
+    - npm i socket.io
+    - setup socket.io in frontend
+    - npm i socket.io-client
+    - try to go through the documentation and implement auth for room verification
+    - Chess or tic-tac-toe game

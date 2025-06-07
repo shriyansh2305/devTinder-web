@@ -38,7 +38,6 @@ const EditProfile = ({ user }) => {
       );
       dispatch(addUser(res?.data?.data));
       setShowToast(true);
-      navigate("/");
       setTimeout(() => {
         setShowToast(false);
       }, 3000);
